@@ -1,0 +1,13 @@
+package com.swevos_marksu.whatever_api;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class WhateverApiApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(WhateverApiApplication.class, args);
+	}
+
+}
