@@ -12,7 +12,7 @@
 	<artifactId>whatever-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>whatever-api</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Whatever API</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -32,7 +32,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>
