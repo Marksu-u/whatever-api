@@ -1,1 +1,60 @@
-<p>gender-predictor works!</p>
+<div class="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md mx-auto">
+      <div class="bg-white rounded-lg shadow-lg p-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">
+          Name Gender Predictor
+        </h2>
+        
+        <form [formGroup]="form" (ngSubmit)="predictGender()" class="space-y-4">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700">
+              Enter a name
+            </label>
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 border"
+              placeholder="e.g. Luc"
+            />
+          </div>
+          
+          <button
+            type="submit"
+            [disabled]="!form.valid || loading"
+            class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+          >
+            {{ loading ? 'Predicting...' : 'Predict Gender' }}
+          </button>
+        </form>
+  
+        @if (error) {
+          <div class="mt-4 bg-red-50 p-4 rounded-md">
+            <p class="text-sm text-red-700">{{ error }}</p>
+          </div>
+        }
+  
+        @if (result) {
+          <div class="mt-6 bg-gray-50 p-4 rounded-md">
+            <h3 class="text-lg font-medium text-gray-900 mb-2">Results for "{{ form.value.name }}"</h3>
+            <div class="space-y-2">
+              <p class="text-sm text-gray-600">
+                Predicted Gender: 
+                <span class="font-medium text-gray-900">{{ result.gender }}</span>
+              </p>
+              <p class="text-sm text-gray-600">
+                Probability: 
+                <span class="font-medium text-gray-900">{{ (result.probability * 100).toFixed(1) }}%</span>
+              </p>
+              <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div 
+                  class="bg-indigo-600 h-2.5 rounded-full" 
+                  [style.width]="(result.probability * 100) + '%'"
+                ></div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
